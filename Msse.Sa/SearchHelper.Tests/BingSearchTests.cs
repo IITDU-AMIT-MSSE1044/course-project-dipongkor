@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -15,6 +14,7 @@ namespace SearchHelper.Tests
             var serchTerm = "lecture";
             var result = await bingSearchHelper.GetSearchResults(serchTerm);
             result.Should().NotBeNull();
+            result.WebPages.Webpage.Length.Should().Be(20);
         }
     }
 }

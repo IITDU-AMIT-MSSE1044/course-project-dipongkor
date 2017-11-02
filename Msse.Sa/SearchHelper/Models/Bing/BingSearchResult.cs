@@ -7,99 +7,137 @@ namespace SearchHelper.Models.Bing
     {
         [JsonProperty("_type")]
         public string Type { get; set; }
-        public Instrumentation instrumentation { get; set; }
-        public Querycontext queryContext { get; set; }
-        public Webpages webPages { get; set; }
-        public Relatedsearches relatedSearches { get; set; }
-        public Rankingresponse rankingResponse { get; set; }
+        [JsonProperty("instrumentation")]
+        public Instrumentation Instrumentation { get; set; }
+        [JsonProperty("queryContext")]
+        public Querycontext QueryContext { get; set; }
+        [JsonProperty("webPages")]
+        public Webpages WebPages { get; set; }
+        [JsonProperty("relatedSearches")]
+        public Relatedsearches RelatedSearches { get; set; }
+        [JsonProperty("rankingResponse")]
+        public Rankingresponse RankingResponse { get; set; }
     }
 
     public class Instrumentation
     {
-        public string pingUrlBase { get; set; }
-        public string pageLoadPingUrl { get; set; }
+        [JsonProperty("pingUrlBase")]
+        public string PingUrlBase { get; set; }
+        [JsonProperty("pageLoadPingUrl")]
+        public string PageLoadPingUrl { get; set; }
     }
 
     public class Querycontext
     {
-        public string originalQuery { get; set; }
+        [JsonProperty("originalQuery")]
+        public string OriginalQuery { get; set; }
     }
 
     public class Webpages
     {
-        public string webSearchUrl { get; set; }
-        public string webSearchUrlPingSuffix { get; set; }
-        public int totalEstimatedMatches { get; set; }
-        public Value[] value { get; set; }
+        [JsonProperty("webSearchUrl")]
+        public string WebSearchUrl { get; set; }
+        [JsonProperty("webSearchUrlPingSuffix")]
+        public string WebSearchUrlPingSuffix { get; set; }
+        [JsonProperty("totalEstimatedMatches")]
+        public int TotalEstimatedMatches { get; set; }
+        [JsonProperty("value")]
+        public Webpage[] Webpage { get; set; }
     }
 
-    public class Value
+    public class Webpage
     {
-        public string id { get; set; }
-        public string name { get; set; }
-        public string url { get; set; }
-        public string urlPingSuffix { get; set; }
-        public string displayUrl { get; set; }
-        public string snippet { get; set; }
-        public DateTime dateLastCrawled { get; set; }
-        public About[] about { get; set; }
+        [JsonProperty("id")]
+        public string Id { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("url")]
+        public string Url { get; set; }
+        [JsonProperty("urlPingSuffix")]
+        public string UrlPingSuffix { get; set; }
+        [JsonProperty("displayUrl")]
+        public string DisplayUrl { get; set; }
+        [JsonProperty("snippet")]
+        public string Snippet { get; set; }
+        [JsonProperty("dateLastCrawled")]
+        public DateTime DateLastCrawled { get; set; }
+        [JsonProperty("about")]
+        public About[] About { get; set; }
     }
 
     public class About
     {
-        public string name { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 
     public class Relatedsearches
     {
-        public string id { get; set; }
-        public Value1[] value { get; set; }
+        [JsonProperty("id")]
+        public string Id { get; set; }
+        [JsonProperty("value")]
+        public Relatedsearch[] Relatedsearch { get; set; }
     }
 
-    public class Value1
+    public class Relatedsearch
     {
-        public string text { get; set; }
-        public string displayText { get; set; }
-        public string webSearchUrl { get; set; }
-        public string webSearchUrlPingSuffix { get; set; }
+        [JsonProperty("text")]
+        public string Text { get; set; }
+        [JsonProperty("displayText")]
+        public string DisplayText { get; set; }
+        [JsonProperty("webSearchUrl")]
+        public string WebSearchUrl { get; set; }
+        [JsonProperty("webSearchUrlPingSuffix")]
+        public string WebSearchUrlPingSuffix { get; set; }
     }
 
     public class Rankingresponse
     {
-        public Mainline mainline { get; set; }
-        public Sidebar sidebar { get; set; }
+        [JsonProperty("mainline")]
+        public Mainline Mainline { get; set; }
+        [JsonProperty("sidebar")]
+        public Sidebar Sidebar { get; set; }
     }
 
     public class Mainline
     {
-        public Item[] items { get; set; }
+        [JsonProperty("items")]
+        public Item[] Items { get; set; }
     }
 
     public class Item
     {
-        public string answerType { get; set; }
-        public int resultIndex { get; set; }
-        public Value2 value { get; set; }
+        [JsonProperty("answerType")]
+        public string AnswerType { get; set; }
+        [JsonProperty("resultIndex")]
+        public int ResultIndex { get; set; }
+        [JsonProperty("value")]
+        public Value2 Value { get; set; }
     }
 
     public class Value2
     {
-        public string id { get; set; }
+        [JsonProperty("id")]
+        public string Id { get; set; }
     }
 
     public class Sidebar
     {
-        public Item1[] items { get; set; }
+        [JsonProperty("items")]
+        public Item1[] Items { get; set; }
     }
 
     public class Item1
     {
-        public string answerType { get; set; }
-        public Value3 value { get; set; }
+        [JsonProperty("answerType")]
+        public string AnswerType { get; set; }
+        [JsonProperty("value")]
+        public Value3 Value { get; set; }
     }
 
     public class Value3
     {
-        public string id { get; set; }
+        [JsonProperty("id")]
+        public string Id { get; set; }
     }
 }
