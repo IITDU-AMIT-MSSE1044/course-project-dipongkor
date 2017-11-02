@@ -5,16 +5,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace SearchHelper.Tests
 {
     [TestClass]
-    public class BingSearchTests
+    public class GoogleSearchHelperTests
     {
         [TestMethod]
-        public async Task GetSearchResults()
+        public async Task GoogleSearchHelperTest_GetSearchResults()
         {
-            var bingSearchHelper = new BingSearchHelper();
+            var googleSearchHelper = new GoogleSearchHelper();
             var serchTerm = "lecture";
-            var result = await bingSearchHelper.GetSearchResults(serchTerm);
+            var result = await googleSearchHelper.GetSearchResults(serchTerm);
             result.Should().NotBeNull();
-            result.WebPages.Webpage.Length.Should().Be(20);
         }
     }
 }

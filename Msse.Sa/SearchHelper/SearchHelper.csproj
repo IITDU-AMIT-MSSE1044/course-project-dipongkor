@@ -46,7 +46,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BingSearchHelper.cs" />
+    <Compile Include="GoogleSearchHelper.cs" />
+    <Compile Include="Models\Bing\About.cs" />
     <Compile Include="Models\Bing\BingSearchResult.cs" />
+    <Compile Include="Models\Bing\Instrumentation.cs" />
+    <Compile Include="Models\Bing\Item.cs" />
+    <Compile Include="Models\Bing\Item1.cs" />
+    <Compile Include="Models\Bing\Mainline.cs" />
+    <Compile Include="Models\Bing\Querycontext.cs" />
+    <Compile Include="Models\Bing\Rankingresponse.cs" />
+    <Compile Include="Models\Bing\Relatedsearch.cs" />
+    <Compile Include="Models\Bing\Relatedsearches.cs" />
+    <Compile Include="Models\Bing\Sidebar.cs" />
+    <Compile Include="Models\Bing\Value2.cs" />
+    <Compile Include="Models\Bing\Value3.cs" />
+    <Compile Include="Models\Bing\Webpage.cs" />
+    <Compile Include="Models\Bing\Webpages.cs" />
+    <Compile Include="Models\Google\Context.cs" />
+    <Compile Include="Models\Google\Cse_Image.cs" />
+    <Compile Include="Models\Google\Cse_Thumbnail.cs" />
+    <Compile Include="Models\Google\GoogleSearchResult.cs" />
+    <Compile Include="Models\Google\Imageobject.cs" />
+    <Compile Include="Models\Google\Item.cs" />
+    <Compile Include="Models\Google\Metatag.cs" />
+    <Compile Include="Models\Google\Nextpage.cs" />
+    <Compile Include="Models\Google\Pagemap.cs" />
+    <Compile Include="Models\Google\Person.cs" />
+    <Compile Include="Models\Google\Queries.cs" />
+    <Compile Include="Models\Google\Request.cs" />
+    <Compile Include="Models\Google\Searchinformation.cs" />
+    <Compile Include="Models\Google\Searchresultspage.cs" />
+    <Compile Include="Models\Google\Url.cs" />
+    <Compile Include="Models\Google\Videoobject.cs" />
+    <Compile Include="Models\Google\Webpage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

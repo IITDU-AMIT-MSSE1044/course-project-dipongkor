@@ -59,7 +59,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BingSearchTests.cs" />
+    <Compile Include="BingSearchHelperTests.cs" />
+    <Compile Include="GoogleSearchHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
