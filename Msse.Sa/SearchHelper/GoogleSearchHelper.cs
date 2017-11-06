@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using HtmlAgilityPack;
 using Newtonsoft.Json;
 using SearchHelper.Models.Google;
 
@@ -30,6 +31,16 @@ namespace SearchHelper
             var response = await HttpClient.GetAsync(query);
             var content = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<GoogleSearchResult>(content);
+        }
+
+        public HtmlDocument GetHtmlResult(string query)
+        {
+
+            var url = $"https://www.google.com/search?num=10&safe=off&q={query}";
+            var web = new HtmlWeb();
+            var doc = web.Load(url);
+
+            return doc;
         }
     }
 }
