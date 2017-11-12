@@ -136,14 +136,59 @@ namespace SearchHelper
                     var originaQueryResults = bingSearchHelper.GetHtmlResults(getOriginalQuery(query));
                     var reverseQueryResults = bingSearchHelper.GetHtmlResults(getReversedQuery(query));
 
-                    jdSum += (double)originaQueryResults.Select(m => m.Title).ToList().Intersect(reverseQueryResults.Select(m => m.Title).ToList()).Count() /
-                             originaQueryResults.Select(m => m.Title).ToList().Union(reverseQueryResults.Select(m => m.Title).ToList()).Count();
+                    jdSum +=
+                        (double)
+                        originaQueryResults.Select(m => m.Title)
+                            .ToList()
+                            .Intersect(reverseQueryResults.Select(m => m.Title).ToList())
+                            .Count() /
+                        originaQueryResults.Select(m => m.Title)
+                            .ToList()
+                            .Union(reverseQueryResults.Select(m => m.Title).ToList())
+                            .Count();
                 }
 
                 return jdSum / queries.Count;
             }
 
+            static double UniversalSwapJd()
+            {
+                var data = File.ReadAllText("hot.json");
+                var queries = JsonConvert.DeserializeObject<List<string>>(data);
+                var jdSum = 0.0;
+                var bingSearchHelper = new BingSearchHelper("en-us");
 
+                GetReverseJdQuery getOriginalQuery = query =>
+                {
+                    var words = query.Split(' ').Select(q => $"{q}");
+                    return string.Join(" ", words);
+                };
+
+                GetReverseJdQuery getReversedQuery = query =>
+                {
+                    var words = query.Split(' ').Reverse().Select(q => $"{q}");
+                    return string.Join(" ", words);
+                };
+
+                foreach (var query in queries)
+                {
+                    var originaQueryResults = bingSearchHelper.GetHtmlResults(getOriginalQuery(query));
+                    var reverseQueryResults = bingSearchHelper.GetHtmlResults(getReversedQuery(query));
+
+                    jdSum +=
+                        (double)
+                        originaQueryResults.Select(m => m.Title)
+                            .ToList()
+                            .Intersect(reverseQueryResults.Select(m => m.Title).ToList())
+                            .Count() /
+                        originaQueryResults.Select(m => m.Title)
+                            .ToList()
+                            .Union(reverseQueryResults.Select(m => m.Title).ToList())
+                            .Count();
+                }
+
+                return jdSum / queries.Count;
+            }
 
             static double CalculateRocof(string hl, List<string> queries, GetFollowUpQuery getFollowUpQuery,
                 IsMissing isMissing)
