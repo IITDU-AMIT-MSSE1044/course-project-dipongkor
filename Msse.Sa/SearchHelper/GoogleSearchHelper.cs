@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
@@ -14,6 +16,7 @@ namespace SearchHelper
         private const string BaseUrl = "https://www.googleapis.com/customsearch/v1";
         private const string Safesearch = "off";
         private const int Count = 10;
+        private readonly string Hl = "";
 
         protected HttpClient HttpClient { get; }
 
@@ -25,6 +28,13 @@ namespace SearchHelper
             };
         }
 
+        public GoogleSearchHelper(string hl)
+        {
+            Hl = hl;
+        }
+
+
+
         public async Task<GoogleSearchResult> GetSearchResults(string serchTerm)
         {
             var query = $"?key={SearchKey}&cx={Cx}&q={serchTerm}&num={Count}&safe={Safesearch}";
@@ -33,14 +43,20 @@ namespace SearchHelper
             return JsonConvert.DeserializeObject<GoogleSearchResult>(content);
         }
 
-        public HtmlDocument GetHtmlResult(string query)
+        public List<HtmlResult> GetHtmlResult(string query)
         {
-
-            var url = $"https://www.google.com/search?num=10&safe=off&q={query}";
+            // var url = $"https://www.google.com/search?num=10&safe=off&q={query}";
+            var url = $"https://www.google.com.hk/search?safe=strict&hl={Hl}&q={query}&num=10&searchType=";
             var web = new HtmlWeb();
             var doc = web.Load(url);
-
-            return doc;
+            var htmlResults = doc.DocumentNode.Descendants("h3")
+                .Where(x => x.FirstChild.Name == "a")
+                .Select(m => new HtmlResult
+                {
+                    Title = m.FirstChild.InnerText,
+                    Url = new Uri(m.FirstChild.Attributes["href"].Value.Substring(m.FirstChild.Attributes["href"].Value.IndexOf("=") + 1, m.FirstChild.Attributes["href"].Value.IndexOf("&")), UriKind.RelativeOrAbsolute)
+                }).ToList();
+            return htmlResults;
         }
     }
 }

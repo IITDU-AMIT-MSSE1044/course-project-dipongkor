@@ -86,6 +86,7 @@
     <Compile Include="Models\Google\Cse_Image.cs" />
     <Compile Include="Models\Google\Cse_Thumbnail.cs" />
     <Compile Include="Models\Google\GoogleSearchResult.cs" />
+    <Compile Include="Models\Google\HtmlResult.cs" />
     <Compile Include="Models\Google\Imageobject.cs" />
     <Compile Include="Models\Google\Item.cs" />
     <Compile Include="Models\Google\Metatag.cs" />

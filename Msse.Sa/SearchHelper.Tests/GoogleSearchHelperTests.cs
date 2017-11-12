@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Nager.PublicSuffix;
+using SearchHelper.Models.Google;
 
 namespace SearchHelper.Tests
 {
@@ -30,18 +31,17 @@ namespace SearchHelper.Tests
         [TestMethod]
         public void GetSearchResult_Html()
         {
-            var googleSearchHelper = new GoogleSearchHelper();
+            var googleSearchHelper = new GoogleSearchHelper("en-us");
             var serchTerm = "lecture";
             var result =  googleSearchHelper.GetHtmlResult(serchTerm);
-            var cites = result.DocumentNode.Descendants("h3")
-                .Select(m => new {Tile = m.FirstChild.InnerText, Url = m.FirstChild.Attributes["href"] });
+            //var cites = result.DocumentNode.Descendants("h3")
+            //    .Select(m =>  new HtmlResult
+            //    {
+            //        Title = m.FirstChild.InnerText,
+            //        Url = new Uri(m.FirstChild.Attributes["href"].Value.Substring(m.FirstChild.Attributes["href"].Value.IndexOf("=") + 1, m.FirstChild.Attributes["href"].Value.IndexOf("&amp;sa"))
+            //    });
 
-            foreach (var cite in cites)
-            {
-                var uri = cite.Url.Value.Substring(cite.Url.Value.IndexOf("=") + 1, cite.Url.Value.IndexOf("&"));
-                Console.WriteLine(uri);
-            }
-            result.Should().NotBe(null);
+            result.Should().Should().NotBe(null);
         }
 
     }
