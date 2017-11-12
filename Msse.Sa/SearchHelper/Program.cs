@@ -230,6 +230,16 @@ namespace SearchHelper
                 return jdSum / queries.Count;
             }
 
+            static double Top1Absent()
+            {
+                throw new NotImplementedException();
+            }
+
+            static double Top5Absent()
+            {
+                throw new NotImplementedException();
+            }
+            
             static double CalculateRocof(string hl, List<string> queries, GetFollowUpQuery getFollowUpQuery,
                 IsMissing isMissing)
             {
