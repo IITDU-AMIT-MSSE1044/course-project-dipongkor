@@ -16,5 +16,14 @@ namespace SearchHelper.Tests
             result.Should().NotBeNull();
             result.WebPages.Webpage.Length.Should().Be(20);
         }
+
+        [TestMethod]
+        public void GetHtmlResults_Html()
+        {
+            var bingSearchHelper = new BingSearchHelper("zh-CN");
+            var serchTerm = "lecture";
+            var result = bingSearchHelper.GetHtmlResults(serchTerm);
+            result.Should().NotBeNull();
+        }
     }
 }
