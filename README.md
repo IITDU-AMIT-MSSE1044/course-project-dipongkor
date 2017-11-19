@@ -30,14 +30,14 @@ I was not able to extend the base project due to the time limitation. It took my
 
 ## Dataset
 Base project did not provide dataset along with it. Therefore, I had to collect the dataset. I have used following dataset:-
-* http://hawttrends.appspot.com/api/terms/
-* https://trends.google.com/trends/ (Hot queries of november)
+* [Hawttrends Appspot](http://hawttrends.appspot.com/api/terms/)
+* [Hot queries of november from google](https://trends.google.com/trends/)
 
 ## Instructions for running project
 * Clone and build the project
 * While building it should resolve all the dependencies from Nuget.
-* Please check [GoogleHtml] (https://github.com/IITDU-AMIT-MSSE1044/course-project-dipongkor/tree/feature/GoogleHtml) branch for Google Search engine
-* Please chech [BingHtml] (https://github.com/IITDU-AMIT-MSSE1044/course-project-dipongkor/tree/feature/BingHtml) branch for Bing Search engine
+* Please check [GoogleHtml](https://github.com/IITDU-AMIT-MSSE1044/course-project-dipongkor/tree/feature/GoogleHtml) branch for Google Search engine
+* Please chech [BingHtml](https://github.com/IITDU-AMIT-MSSE1044/course-project-dipongkor/tree/feature/BingHtml) branch for Bing Search engine
 
 ## Tradeoffs
 NA
