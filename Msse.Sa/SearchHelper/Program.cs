@@ -12,11 +12,8 @@ namespace SearchHelper
     class Program
     {
         delegate bool IsMissing(HtmlResult result, List<HtmlResult> results);
-
         delegate string GetFollowUpQuery(string query, HtmlResult result);
-
-        delegate string GetReverseJdQuery(string query);
-       static DomainParser domainParser = new DomainParser(new WebTldRuleProvider());
+        static readonly DomainParser DomainParser = new DomainParser(new WebTldRuleProvider());
 
         static void Main(string[] args)
         {
@@ -77,7 +74,7 @@ namespace SearchHelper
 
             string MrSiteGetFollowUpQueryDelegate(string query, HtmlResult htmlResult)
             {
-                var domain = domainParser.Get(htmlResult.Url.Host);
+                var domain = DomainParser.Get(htmlResult.Url.Host);
                 var followUpQuery = $"{query} site:.{domain.TLD}";
                 return followUpQuery;
             }
@@ -234,7 +231,7 @@ namespace SearchHelper
 
             string MrSiteGetFollowUpQueryDelegate(string query, HtmlResult htmlResult)
             {
-                var domain = domainParser.Get(htmlResult.Url.Host);
+                var domain = DomainParser.Get(htmlResult.Url.Host);
                 var followUpQuery = $"{query} site:.{domain.TLD}";
                 return followUpQuery;
             }
@@ -276,7 +273,7 @@ namespace SearchHelper
 
             string MrSiteGetFollowUpQueryDelegate(string query, HtmlResult htmlResult)
             {
-                var domain = domainParser.Get(htmlResult.Url.Host);
+                var domain = DomainParser.Get(htmlResult.Url.Host);
                 var followUpQuery = $"{query} site:.{domain.TLD}";
                 return followUpQuery;
             }
