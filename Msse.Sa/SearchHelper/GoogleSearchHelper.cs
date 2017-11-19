@@ -43,9 +43,8 @@ namespace SearchHelper
             return JsonConvert.DeserializeObject<GoogleSearchResult>(content);
         }
 
-        public List<HtmlResult> GetHtmlResult(string query)
+        public List<HtmlResult> GetHtmlResults(string query)
         {
-            // var url = $"https://www.google.com/search?num=10&safe=off&q={query}";
             var url = $"https://www.google.com.hk/search?safe=strict&hl={Hl}&q={query}&num=10&searchType=";
             var web = new HtmlWeb();
             var doc = web.Load(url);
