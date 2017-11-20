@@ -40,7 +40,7 @@ Base project did not provide dataset along with it. Therefore, I had to collect 
 * Please chech [BingHtml](https://github.com/IITDU-AMIT-MSSE1044/course-project-dipongkor/tree/feature/BingHtml) branch for Bing Search engine
 
 ## Tradeoffs
-NA
+Base project did not provide dataset along with it. I had to collect the dataset.
 
 # References
 [1] Xiang, Shaowen. "On automatic testing of web search engines." (2015).
