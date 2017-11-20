@@ -21,10 +21,8 @@ namespace SearchHelper
         {
             var data = File.ReadAllText("data.json");
             var dataAsDictionary = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(data);
-            //MrSite(dataAsDictionary);
-            //MrTitle(dataAsDictionary);
-            //Console.WriteLine(MpReverseJd());
-            Top1Absent(dataAsDictionary);
+            
+            Console.WriteLine(UniversalSwapJd());
             Console.ReadKey();
         }
 
@@ -154,22 +152,22 @@ namespace SearchHelper
             var jdSum = 0.0;
             var bingSearchHelper = new BingSearchHelper("en-us");
 
-            GetReverseJdQuery getOriginalQuery = query =>
+            string GetOriginalQuery(string query)
             {
                 var words = query.Split(' ').Select(q => $"{q}");
                 return string.Join(" ", words);
-            };
+            }
 
-            GetReverseJdQuery getReversedQuery = query =>
+            string GetReversedQuery(string query)
             {
                 var words = query.Split(' ').Reverse().Select(q => $"{q}");
                 return string.Join(" ", words);
-            };
+            }
 
             foreach (var query in queries)
             {
-                var originaQueryResults = bingSearchHelper.GetHtmlResults(getOriginalQuery(query));
-                var reverseQueryResults = bingSearchHelper.GetHtmlResults(getReversedQuery(query));
+                var originaQueryResults = bingSearchHelper.GetHtmlResults(GetOriginalQuery(query));
+                var reverseQueryResults = bingSearchHelper.GetHtmlResults(GetReversedQuery(query));
 
                 jdSum +=
                     (double)
