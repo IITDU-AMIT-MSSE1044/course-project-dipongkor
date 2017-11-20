@@ -15,8 +15,6 @@ namespace SearchHelper
 
         delegate string GetFollowUpQuery(string query, HtmlResult result);
 
-        delegate string GetReverseJdQuery(string query);
-
         static void Main(string[] args)
         {
             var data = File.ReadAllText("data.json");
@@ -108,7 +106,7 @@ namespace SearchHelper
 
         static double MpReverseJd()
         {
-            var data = File.ReadAllText("hot.json");
+            var data = File.ReadAllText("google-hot-query.json");
             var queries = JsonConvert.DeserializeObject<List<string>>(data);
             var jdSum = 0.0;
             var bingSearchHelper = new BingSearchHelper("en-us");
@@ -147,7 +145,7 @@ namespace SearchHelper
 
         static double UniversalSwapJd()
         {
-            var data = File.ReadAllText("hot.json");
+            var data = File.ReadAllText("google-hot-query.json");
             var queries = JsonConvert.DeserializeObject<List<string>>(data);
             var jdSum = 0.0;
             var bingSearchHelper = new BingSearchHelper("en-us");
@@ -186,27 +184,27 @@ namespace SearchHelper
 
         static double SwapJdWithDomain()
         {
-            var data = File.ReadAllText("hot.json");
+            var data = File.ReadAllText("google-hot-query.json");
             var queries = JsonConvert.DeserializeObject<List<string>>(data);
             var jdSum = 0.0;
             var bingSearchHelper = new BingSearchHelper("en-us");
 
-            GetReverseJdQuery getOriginalQuery = query =>
+            string GetOriginalQuery(string query)
             {
                 var words = query.Split(' ').Select(q => $"{q}");
                 return $"{string.Join(" ", words)} site:.com, site:.edu, site:.mil or site:.lc";
-            };
+            }
 
-            GetReverseJdQuery getReversedQuery = query =>
+            string GetReversedQuery(string query)
             {
                 var words = query.Split(' ').Reverse().Select(q => $"{q}");
                 return $"{string.Join(" ", words)} site:.com, site:.edu, site:.mil or site:.lc";
-            };
+            }
 
             foreach (var query in queries)
             {
-                var originaQueryResults = bingSearchHelper.GetHtmlResults(getOriginalQuery(query));
-                var reverseQueryResults = bingSearchHelper.GetHtmlResults(getReversedQuery(query));
+                var originaQueryResults = bingSearchHelper.GetHtmlResults(GetOriginalQuery(query));
+                var reverseQueryResults = bingSearchHelper.GetHtmlResults(GetReversedQuery(query));
 
                 jdSum +=
                     (double)
